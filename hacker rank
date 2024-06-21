@@ -1,0 +1,55 @@
+Q-1 =You and your friend go to buy a water bottle and your friend decides to buy the second costly bottle. The Shop Owner gives you a price list in random order. Print the price of the second costly water bottle.
+
+Input Format
+
+First line of input contains T- number of test cases. Each test case contains N - number of water bottles available. In another line, the price of a water bottle.
+
+Constraints
+
+1<=T<=200, 1<=N<=10000
+
+Output Format
+
+Print a single integer which is the price of the second expensive bottle. If the second cost is not available then print 0.
+
+Sample Input 0
+
+1
+6
+12 35 1 10 34 1
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+  int testCases;
+  cin >> testCases;
+
+  for (int i = 0; i < testCases; i++) {
+    int bottles;
+    cin >> bottles;
+
+    if (bottles < 2) {
+      cout << 0 << endl; // No second most expensive bottle if less than 2 bottles
+      continue;
+    }
+
+    int prices[bottles];
+    for (int j = 0; j < bottles; j++) {
+      cin >> prices[j];
+    }
+
+    sort(prices, prices + bottles, greater<int>()); // Sort in descending order
+
+    if (bottles >= 2) {
+      cout << prices[1] << endl; // Second element is the second most expensive bottle
+    } else {
+      cout << 0 << endl; // No second most expensive bottle if only 1 bottle
+    }
+  }
+
+  return 0;
+}
+
